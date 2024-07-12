@@ -1,0 +1,59 @@
+import styled from "styled-components";
+import React from "react";
+
+const SearchBox = styled.form`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin: 20px;
+  border: black solid 1px;
+  border-radius: 2px;
+
+  & input {
+    padding: 10px;
+    font-size: 14px;
+    border: none;
+    outline: none;
+    font-family: Montserrat;
+    font-weight: bold;
+  }
+  & button {
+    background-color: black;
+    font-size: 14px;
+    padding: 0 10px;
+    color: white;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-family: Montserrat;
+    font-weight: bold;
+  }
+`;
+const ChooseCityLabel = styled.span`
+  color: black;
+  margin: 10px auto;
+  font-size: 18px;
+  font-weight: bold;
+`;
+const WelcomeWeatherLogo = styled.img`
+  width: 140px;
+  height: 140px;
+  margin: 40px auto;
+`;
+const CityComponent = (props) => {
+  const { updateCity, fetchWeather } = props;
+  return (
+    <>
+      <WelcomeWeatherLogo src={"data:image/jpeg;base64,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"} />
+      <ChooseCityLabel>Find Weather of your city</ChooseCityLabel>
+      <SearchBox onSubmit={fetchWeather}>
+        <input
+          onChange={(e) => updateCity(e.target.value)}
+          placeholder="City"
+        />
+        <button type={"submit"}>Search</button>
+      </SearchBox>
+    </>
+  );
+};
+export default CityComponent;
